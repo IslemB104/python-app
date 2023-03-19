@@ -1,0 +1,27 @@
+python-app:
+1.
+$ touch Dockerfile
+$ docker build . -t image-python
+2.
+$ docker run -i image-python
+3.
+$ docker run -it --name c1-python f0e4c9d9ebcc0a561492435c1bf69aa6b8a2b72bb85c17bba6ee295b88cbc6bc
+$ docker stop c1-python
+$ docker start c1-python
+4.
+$ docker container prune
+$ docker image prune
+$ docker rmi image-python
+5.
+$ docker build . -t py-image:20
+6.
+$ docker run -it --rm --name c2-python f0e4c9d9ebcc0a561492435c1bf69aa6b8a2b72bb85c17bba6ee295b88cbc6bc
+----------------------------------------------------------------------------------------------------
+Dockerfile:
+FROM python
+WORKDIR /python_app
+COPY . /python_app
+CMD [ "python","bmi.py" ]
+----------------------------------------------------------------------------------------------------
+$ docker stop c2-python
+=> c2-python was removed
